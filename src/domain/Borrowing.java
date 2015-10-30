@@ -7,7 +7,7 @@ import javax.xml.datatype.Duration;
 
 public class Borrowing {
 	
-	ArrayList<Book> books;
+	ArrayList<Book> books = new ArrayList<Book>();
 	Date borrowingDate;
 	
 	public Borrowing(Date borrowingDate){
@@ -33,8 +33,16 @@ public class Borrowing {
 	}
 
 	
-	public void borrowBook(Book book){
+	public void borrowBooks(){
 		
+		ArrayList<Book> books = getBooks();
+		
+		for(Book book : books){
+			book.setState(book.BORROWED);
+			System.out.print("Livro " + book.getName() + " emprestado!");
+			System.out.println();
+		}
+
 	}
 	
 	public void returnBook(Book book){

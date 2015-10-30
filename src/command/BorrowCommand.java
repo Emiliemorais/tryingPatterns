@@ -1,8 +1,5 @@
 package command;
 
-import java.util.ArrayList;
-
-import domain.Book;
 import domain.Borrowing;
 
 public class BorrowCommand extends Command {
@@ -15,23 +12,13 @@ public class BorrowCommand extends Command {
 	
 	@Override
 	public void execute() {
-		ArrayList<Book> books = borrowing.getBooks();
 		
-		for(Book book : books){
-			borrowing.borrowBook(book);
-			
-		}
-		
+		borrowing.borrowBooks();
+
 	}
 
 	@Override
 	public void undo() {
-		ArrayList<Book> books = borrowing.getBooks();
-		
-		for(Book book : books){
-			borrowing.returnBook(book);
-		}
-				
 
 	}
 

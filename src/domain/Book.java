@@ -21,7 +21,7 @@ public class Book {
 	private void setName(String name) {
 		this.name = name;
 	}
-	private void setState(int state) {
+	public void setState(int state) {
 		this.state = state;
 	}
 	
