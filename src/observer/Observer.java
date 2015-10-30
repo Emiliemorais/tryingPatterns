@@ -4,7 +4,6 @@ import domain.Borrowing;
 
 public abstract class Observer {
 	
-	Borrowing borrowing;
-
-	public abstract void update(Borrowing borrowing);
+	public abstract void newBorrowing(Borrowing borrowing);
+	public abstract void endBorrowing(Borrowing borrowing);
 }

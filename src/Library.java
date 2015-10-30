@@ -21,7 +21,10 @@ public class Library {
 		borrowing.addBook(book2);
 		
 		// Borrowing the requested books
-		Invoker invoker = new Invoker();
-		invoker.makeBorrowing(borrowing);
+		Attendance attendance = new Attendance();
+		attendance.makeBorrowing(borrowing);
+		
+		// Undoing the borrowing (last action)
+		attendance.undo();
 	}
 }

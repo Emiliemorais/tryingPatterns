@@ -41,32 +41,42 @@ public class Borrowing {
 	public Date getBorrowingDate() {
 		return borrowingDate;
 	}
-
 	
 	public void borrowBooks(){
 		
 		ArrayList<Book> books = getBooks();
 		
 		for(Book book : books){
-			book.setState(book.BORROWED);
+			book.setState(Book.BORROWED);
 			
 			System.out.print("Livro " + book.getName() + " emprestado para o estudante "+ this.student.getName() + "!");
 			System.out.println();
 		}
-		notifyObservers();
+		notifyObserversOfBorrowing();
 	}
 	
-	private void notifyObservers() {
+	private void notifyObserversOfBorrowing() {
 		
 		for(Observer observer : observers){
-			((Student) observer).update(this);
+			((Student) observer).newBorrowing(this);
 		}
-		
 	}
 
-	public void returnBook(Book book){
+	public void returnBooks(){
 		
+		for(Book book : books){
+			book.setState(Book.AVAILABLE);
+			
+			System.out.print("Livro " + book.getName() + " devolvido pelo estudante "+ this.student.getName() + "!");
+			System.out.println();
+		}
+		notifyObserversOfReturning();
 	}
-
-
+	
+	public void notifyObserversOfReturning(){
+		
+		for(Observer observer : observers){
+			((Student) observer).endBorrowing(this);
+		}
+	}
 }

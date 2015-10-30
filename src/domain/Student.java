@@ -32,12 +32,20 @@ public class Student extends Observer{
 	}
 
 	@Override
-	public void update(Borrowing borrowing) {
+	public void newBorrowing(Borrowing borrowing) {
 		this.borrowings.add(borrowing);
-		sendEmail();
+		sendEmail("Um email com os dados do empréstimo foi enviado.");
 	}	
+
+	@Override
+	public void endBorrowing(Borrowing borrowing) {
+		this.borrowings.remove(borrowing);
+		sendEmail("Um email confirmando a devolução foi enviado.");
+	}
 	
-	private void sendEmail() {
-		System.out.print("Um email com os dados do empréstimo foi enviado.");
-	}	
+	private void sendEmail(String message){
+		System.out.println();
+		System.out.println(message);
+		System.out.println();
+	}
 }

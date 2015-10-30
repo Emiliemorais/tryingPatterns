@@ -11,13 +11,13 @@ public class BorrowCommand extends Command {
 	}
 	
 	@Override
-	public void execute() {
+	public void execute(){
 		borrowing.borrowBooks();
 	}
 
 	@Override
-	public void undo() {
-
+	public void undo(){
+		borrowing.returnBooks();
 	}
 
 }

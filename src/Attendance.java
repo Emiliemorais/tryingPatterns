@@ -4,12 +4,12 @@ import command.BorrowCommand;
 import command.Command;
 import domain.Borrowing;
 
-public class Invoker {
+public class Attendance {
 	
 	ArrayList<Command> commands = new ArrayList<Command>();
 	Command lastCommand;
 	
-	public Invoker(){
+	public Attendance(){
 		 
 	}
 	
