@@ -19,6 +19,7 @@ public class BorrowCommand extends Command {
 		
 		for(Book book : books){
 			borrowing.borrowBook(book);
+			
 		}
 		
 	}
