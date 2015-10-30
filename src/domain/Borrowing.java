@@ -3,11 +3,12 @@ package domain;
 import java.util.Date;
 import java.util.ArrayList;
 
-import javax.xml.datatype.Duration;
+import observer.Observer;
 
 public class Borrowing {
 	
 	private ArrayList<Book> books = new ArrayList<Book>();
+	private ArrayList<Observer> observers = new ArrayList<Observer>();
 	private Date borrowingDate;
 	private Student student;
 	
@@ -18,6 +19,8 @@ public class Borrowing {
 	
 	private void setStudent(Student student){
 		this.student = student;
+		Observer observer = (Observer) student;
+		this.observers.add(observer);
 	}
 	
 	public Student getStudent(){
@@ -46,11 +49,21 @@ public class Borrowing {
 		
 		for(Book book : books){
 			book.setState(book.BORROWED);
+			
 			System.out.print("Livro " + book.getName() + " emprestado para o estudante "+ this.student.getName() + "!");
 			System.out.println();
 		}
+		notifyObservers();
 	}
 	
+	private void notifyObservers() {
+		
+		for(Observer observer : observers){
+			((Student) observer).update(this);
+		}
+		
+	}
+
 	public void returnBook(Book book){
 		
 	}
