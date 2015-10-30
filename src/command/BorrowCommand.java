@@ -12,9 +12,7 @@ public class BorrowCommand extends Command {
 	
 	@Override
 	public void execute() {
-		
 		borrowing.borrowBooks();
-
 	}
 
 	@Override
