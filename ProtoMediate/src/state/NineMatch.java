@@ -8,4 +8,9 @@ public class NineMatch extends MatchState {
 
 	}
 
+	@Override
+	protected void setStateName(){
+		this.stateName = "Nove, ladrão";
+	}
+
 }

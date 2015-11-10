@@ -6,4 +6,9 @@ public class TwelveMatch extends MatchState {
 	public void endMatch() {
 		// TODO Auto-generated method stub
 	}
+	
+	@Override
+	protected void setStateName(){
+		this.stateName = "Doze, carai!";
+	}
 }

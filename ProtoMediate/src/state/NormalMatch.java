@@ -31,7 +31,7 @@ public class NormalMatch extends MatchState {
 	}
 
 	private void getMatchWinner(Player[] players) {
-		ArrayList<Player> players = match.getPlayers();
+		//ArrayList<Player> players = match.getPlayers();
 
 	}
 

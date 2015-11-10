@@ -7,5 +7,9 @@ public class TrucoMatch extends MatchState {
 		// TODO Auto-generated method stub
 
 	}
-
+	
+	@Override
+	protected void setStateName(){
+		this.stateName = "Truco";
+	}
 }
