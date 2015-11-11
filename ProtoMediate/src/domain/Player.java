@@ -35,7 +35,7 @@ public class Player {
 		return hand;
 	}
 	
-	private void setHand(Hand hand) {
+	public void setHand(Hand hand) {
 		this.hand = hand;
 	}
 }

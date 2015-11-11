@@ -9,6 +9,22 @@ public class Card {
 		setSuit(suit);
 		setValue(value);
 	}
+	
+	private Card(Card cardPrototype){
+		
+		String suit = cardPrototype.getSuit();
+		String value = cardPrototype.getValue();
+		
+		setSuit(suit);
+		setValue(value);
+	}
+	
+	public Card clone(){
+		
+		Card newCard = new Card(this);
+		
+		return newCard;
+	}
 
 	public String getSuit() {
 		return suit;

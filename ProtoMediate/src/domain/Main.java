@@ -18,11 +18,13 @@ public class Main {
 		Card sevenOfHearts = new Card("Copas", "7");
 		Card twoOfSpades = new Card("Espadas", "2");
 		Card threeOfDiamonds = new Card("Ouros", "3");
+		Card twoOfHearts = new Card("Copas", "2");
 		
 		Hand italosHand = new Hand();
 		italosHand.addCard(sevenOfHearts);
 		italosHand.addCard(twoOfSpades);
-		italosHand.addCard(threeOfDiamonds);
+		//italosHand.addCard(threeOfDiamonds);
+		italosHand.addCard(twoOfHearts);
 		
 		Player italo = new Player("Ítalo", italosHand);
 		
@@ -41,7 +43,7 @@ public class Main {
 		
 		//Third round
 		emilie.throwCard(emiliesHand.getCard(twoOfDiamonds), match);
-		italo.throwCard(italosHand.getCard(threeOfDiamonds), match);
+		italo.throwCard(italosHand.getCard(twoOfHearts), match);
 		match.endCurrentRound();
 		
 		//match.getState().endMatch();
