@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<classpath>
+	<classpathentry kind="src" path="Commserver/src"/>
+	<classpathentry kind="src" path="Protodapter on Bridge/src"/>
+	<classpathentry kind="src" path="ProtoMediate/src"/>
+	<classpathentry kind="src" path="Prototite/src"/>
+	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
+	<classpathentry kind="output" path="ProtoMediate/bin"/>
+</classpath>
