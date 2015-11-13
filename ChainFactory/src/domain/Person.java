@@ -13,9 +13,9 @@ public abstract class Person {
 	
 	public Person(){}
 	
-	public abstract Person getInstance();
-
 	public String getName() {
 		return this.name;
 	}
+	
+	public abstract Person clone();
 }

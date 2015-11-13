@@ -1,8 +1,11 @@
 package factory.singleton;
 
 import domain.CPF;
+import domain.Individual;
+import domain.LegalPerson;
 import domain.Person;
 import factory.PersonFactory;
+import factory.builder.PersonBuilder;
 import factory.prototype.Prototype;
 
 public class Singleton extends PersonFactory {
@@ -24,14 +27,33 @@ public class Singleton extends PersonFactory {
 	}
 
 	@Override
+	public Person create(String name, String cpf,PersonBuilder personBuilder) {
+		
+		Person person = getNextFactory().create(name, cpf, personBuilder);
+		
+		return person;
+	}	
+	
+	@Override
 	public Person create(Person person) {
-		// TODO Auto-generated method stub
-		return null;
+		
+		Person newPerson = getNextFactory().create(person);
+		
+		return newPerson;
 	}
 
 	@Override
-	public Person create() {
-		// TODO Auto-generated method stub
-		return null;
+	public Person create(String type){
+		
+		Person person;
+		
+		if(type == "individual"){
+			person = Individual.getInstance();
+		}
+		else{
+			person = LegalPerson.getInstance();
+		}
+		
+		return person;
 	}
 }

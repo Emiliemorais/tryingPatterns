@@ -8,11 +8,19 @@ public class Individual extends Person {
 		super(name);
 		this.cpf = cpf;
 	}
+	
+	public Individual(String name) {
+		super(name);
+	}
 
+	private Individual(Individual individual) {
+		super(individual.getName());
+		this.cpf = individual.getCpf();
+	}
+	
 	public Individual(){}
 	
-	@Override
-	public Person getInstance() {
+	public static Person getInstance() {
 			
 		Person instance;
 		
@@ -20,7 +28,7 @@ public class Individual extends Person {
 			instance = person;
 		}
 		else{
-			instance = new Individual();
+			instance = new Individual("Singleton Individual Person");
 		}
 		
 		return instance;
@@ -28,5 +36,10 @@ public class Individual extends Person {
 	
 	public CPF getCpf() {
 		return this.cpf;
+	}
+
+	@Override
+	public Person clone() {
+		return new Individual(this);
 	}
 }

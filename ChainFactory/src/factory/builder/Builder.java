@@ -7,33 +7,61 @@ import factory.singleton.Singleton;
 
 public class Builder extends PersonFactory {
 	
+	private String name;
+	private String cpf;
+	
 	public Builder(){
 		setNextFactory(new Singleton());
 	}
 
 	@Override
+	public Person create(String name, String cpf, PersonBuilder personBuilder) {
+		
+		personBuilder.buildName(name);
+		personBuilder.buildCPF(cpf);
+		
+		Person person = personBuilder.getPerson();
+		
+		return person;
+	}
+	
+	@Override
 	public Person create(String type, String name, CPF cpf) {
-		// TODO Auto-generated method stub
-		return null;
+		
+		Person person = getNextFactory().create(type, name, cpf);
+		
+		return person;
 	}
 
 	@Override
 	public Person create(String type, String name, String cnpj) {
-		// TODO Auto-generated method stub
-		return null;
+		
+		Person person = getNextFactory().create(type, name, cnpj);
+		
+		return person;
 	}
 
 	@Override
 	public Person create(Person person){
 		
-		return null;
+		Person newPerson = getNextFactory().create(person);
+		
+		return newPerson;
 	}
 
 	@Override
-	public Person create(){
-		// TODO Auto-generated method stub
-		return null;
+	public Person create(String type){
+		
+		Person person = getNextFactory().create(type);
+		
+		return person;
 	}
 
+	public String getName() {
+		return name;
+	}
 
+	public String getCpf() {
+		return cpf;
+	}
 }

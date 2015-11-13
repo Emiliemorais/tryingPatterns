@@ -1,8 +1,10 @@
 package factory.factory_method;
 
 import domain.CPF;
+import domain.Individual;
 import domain.LegalPerson;
 import domain.Person;
+import factory.builder.PersonBuilder;
 
 
 public class LegalPersonFactory extends FactoryMethod {
@@ -18,8 +20,14 @@ public class LegalPersonFactory extends FactoryMethod {
 	@Override
 	public Person create(String type, String name, String cnpj) {
 		
-		Person person = new LegalPerson(name, cnpj);
+		Person person;
 		
+		if(type == "factory"){
+			person = new LegalPerson(name, cnpj);
+		}
+		else{
+			person = getNextFactory().create(type, name, cnpj);
+		}
 		return person;
 	}
 
@@ -32,10 +40,18 @@ public class LegalPersonFactory extends FactoryMethod {
 	}
 
 	@Override
-	public Person create(){
+	public Person create(String type){
 		
-		Person person = getNextFactory().create();
+		Person person = getNextFactory().create(type);
 		
 		return person;
 	}
+	
+	@Override
+	public Person create(String name, String cpf, PersonBuilder personBuilder) {
+		
+		Person person = getNextFactory().create(name, cpf, personBuilder);
+		
+		return person;
+	}	
 }

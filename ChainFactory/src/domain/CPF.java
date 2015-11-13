@@ -1,10 +1,10 @@
 package domain;
 
 import domain.CPFException;
+import factory.builder.Builder;
+import factory.builder.PersonBuilder;
 
-import domain.Model;
-
-public class CPF extends Model{
+public class CPF{
 	
 	private static final String CPF_IS_INVALID = "O CPF informado não é válido";
 	private static final String CPF_MUST_BE_ONLY_NUMBERS = "O CPF deve conter apenas 11 números.";
@@ -12,6 +12,9 @@ public class CPF extends Model{
 	private static final int CPF_LENGTH = 11;
 	
 	private String cpf;
+	private Builder director;
+	
+	public CPF(){}
 	
 	public CPF(String cpf) throws CPFException{
 		
@@ -128,5 +131,98 @@ public class CPF extends Model{
 		boolean isValid = verific.equals(result);
 		
 		return isValid;
+	}
+	
+	/**
+	 * Check if a given string is not null or empty
+	 * @param string - The string to be checked
+	 * @return TRUE if the string is NOT empty, or FALSE if it does
+	 */
+	protected boolean isNotEmpty(final String string){
+		
+		boolean isNotEmpty = false;
+		
+		if(string != null){
+			
+			isNotEmpty = !string.isEmpty();
+		}else{
+			isNotEmpty = false;
+		}
+		
+		return isNotEmpty;
+	}
+	
+	/**
+	 * Check if a given string contains only numbers within
+	 * @param string - The string to be checked
+	 * @return TRUE if it contains only numbers, or FALSE if it does not
+	 */
+	protected boolean containsOnlyNumbers(String string){
+		
+		boolean containsOnlyNumbers = false;
+		
+		if(this.isNotEmpty(string)){
+			
+			if(string.matches("[0-9]+")){
+				
+				containsOnlyNumbers = true;
+			}else{
+				containsOnlyNumbers = false;
+			}
+		}else{
+			containsOnlyNumbers = false;
+		}
+		
+		return containsOnlyNumbers;
+	}
+	
+	/**
+	 * Check if a given string contains only alphabetical characters
+	 * @param string - the string to be checked
+	 * @return TRUE if it contains only letters, or FALSE if it does not
+	 */
+	protected boolean containsOnlyLetters(final String string){
+		
+		boolean containsOnlyLetters = false;
+		
+		if(this.isNotEmpty(string)){
+			
+			if(string.matches("[a-zA-Zà-úÀ-Ú]+")){
+				
+				containsOnlyLetters = true;
+			}else{
+				containsOnlyLetters = false;
+			}
+			
+		}else{
+			containsOnlyLetters = false;
+		}
+		
+		return containsOnlyLetters;
+	}
+	
+	/**
+	 * Check if a given string contains only alphabetical characters or spaces within 
+	 * @param string - The string to be checked
+	 * @return TRUE if it contains only alphabetical characters or spaces, or FALSE if it does not
+	 */
+	protected boolean containsOnlyLettersAndSpaces(final String string){
+		
+		boolean containsOnlyLetters = false;
+		
+		if(this.isNotEmpty(string)){
+			
+			if(string.matches("[a-zA-Zà-úÀ-Ú\\s]+")){
+				
+				containsOnlyLetters = true;
+			}else{
+				containsOnlyLetters = false;
+			}
+			
+		}else{
+			containsOnlyLetters = false;
+		}
+		
+		return containsOnlyLetters;
 	}
 }

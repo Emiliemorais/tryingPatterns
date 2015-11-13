@@ -9,10 +9,22 @@ public class LegalPerson extends Person {
 		this.cnpj = cnpj;
 	}
 	
+	public LegalPerson(String name){
+		super(name);
+	}
+	
 	public LegalPerson(){}
 
-	@Override
-	public Person getInstance() {
+	public LegalPerson(LegalPerson legalPerson) {
+		super(legalPerson.getName());
+		this.cnpj = legalPerson.getCNPJ();
+	}
+
+	private String getCNPJ() {
+		return this.cnpj;
+	}
+
+	public static Person getInstance() {
 		
 		Person instance;
 		
@@ -20,10 +32,17 @@ public class LegalPerson extends Person {
 			instance = person;
 		}
 		else{
-			instance = new LegalPerson();
+			instance = new LegalPerson("Singleton Legal Person");
 		}
 		
 		return instance;
+	}
+
+	@Override
+	public Person clone() {
+		
+		return new LegalPerson(this);
+		
 	}
 
 }

@@ -1,8 +1,10 @@
 package factory.prototype;
 
 import domain.CPF;
+import domain.Individual;
 import domain.Person;
 import factory.PersonFactory;
+import factory.builder.PersonBuilder;
 
 public class Prototype extends PersonFactory {
 	
@@ -12,26 +14,33 @@ public class Prototype extends PersonFactory {
 
 	@Override
 	public Person create(String type, String name, CPF cpf) {
-		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
 	public Person create(String type, String name, String cnpj) {
-		// TODO Auto-generated method stub
 		return null;
 	}
 
+	@Override
+	public Person create(String name, String cpf, PersonBuilder personBuilder) {
+		
+		Person person = getNextFactory().create(name, cpf, personBuilder);
+		
+		return person;
+	}	
+	
 	@Override
 	public Person create(Person person) {
-		// TODO Auto-generated method stub
-		return null;
+		
+		Person newPerson = person.clone();
+		
+		return newPerson;
 	}
 
 	@Override
-	public Person create() {
-		// TODO Auto-generated method stub
+	public Person create(String type) {
 		return null;
 	}
-
+	
 }
